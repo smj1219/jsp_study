@@ -15,6 +15,10 @@
 	<div class="container">
 		<h3>오늘의 운세 페이지</h3>
 		<p> 오늘의 운세 : <strong><%=fortuneToday %></strong></p>
+		<%--EL 을 이용하면 request 영역에 담긴 데이터  key 값으로 바로 추출할 수 있다 --%>
+		<p>오늘의 운세 : <strong>${requestScope.fortuneToday}</strong></p>
+		<%--requestScope. 은 생략가능하다 --%>
+		<p>오늘의 운세 : <strong>${fortuneToday}</strong></p>
 	</div>
 </body>
 </html>

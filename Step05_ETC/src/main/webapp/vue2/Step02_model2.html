@@ -7,6 +7,11 @@
 </head>
 <body>
 	<h1>v-model 사용하기2</h1>
+	<!-- 
+		v-model="msg" 의 의미?
+		
+		해당 input 요소에 입력한 내용을 msg 라는 이름의 모델에 직시 반영하겠다는 의미
+	 -->
     <div id="app">
         <input type="text" v-model="msg">
         <br>
@@ -24,21 +29,17 @@
         <textarea v-model="comment"></textarea>
         <br>
         <!-- 
-            boolean 값으로 관리 하지 않고 
-            원하는 문자열 값으로 관리하기 
+            boolean 값으로 관리 하지 않고 원하는 문자열 값으로 관리하기 
         -->
-        <input type="checkbox" 
-            v-model="isRun" 
-            true-value="yes"
-            false-value="no">
+        <input type="checkbox" v-model="isRun" true-value="yes" false-value="no">
         <p>
             msg : <strong>{{msg}}</strong>
             <br>
             isChecked : <strong>{{isChecked}}</strong>
             <br>
             lunch : <strong>{{lunch}}</strong>
-            <br>
-            comment : <strong v-text="comment"></strong>
+            <br><!-- <pre> 요소는 개행 기호도 해석을 해준다 -->
+            comment : <pre v-text="comment"></pre>
             <br>
             isRun : <strong v-text="isRun"></strong>
         </p>

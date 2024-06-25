@@ -13,6 +13,14 @@
 <head>
 <meta charset="UTF-8">
 <title>user/private/info.jsp</title>
+<style>
+	#profileImage{
+		width: 100px;
+		height: 100px;
+		border: 1px solid #cecece;
+		border-radius: 50%;
+	}
+</style>
 </head>
 <body>
 	<div class="container">

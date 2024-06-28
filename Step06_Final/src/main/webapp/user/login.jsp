@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="test.user.dto.UserDto"%>
 <%@page import="test.user.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,6 +7,7 @@
 	//1.폼 전송되는 id, pwd 를 읽어와서
 	String id=request.getParameter("id");
 	String pwd=request.getParameter("pwd");
+	
 	//2. id 에 해당하는 회원정보를 UserDao 객체를 이용해서 얻어와서
 	UserDto dto = UserDao.getInstance().getData(id);
 	//3. 실제로 존재하는 아이디 이고 존재한다면 비밀번호로 일치하는지 비교해서
@@ -17,7 +19,10 @@
 			isLiginSuccess=true;
 		}
 	}
-	
+	//로그인 후 가야할 목적지 정보
+	String url=request.getParameter("url");
+	//로그인 실패를 대비에서 목적지 정보를 인코딩한 결과도 준비한다
+	String encodedUrl=URLEncoder.encode(url);
 
 %>
 <!DOCTYPE html>
@@ -31,12 +36,12 @@
 		<%if(isLiginSuccess){ %>
 			<p>
 				<strong><%=dto.getId() %></strong> 님 로그인 되었습니다.
-				<a href="${pageContext.request.contextPath }/">확인</a>
+				<a href="<%=url %>">확인</a>
 			</p>
 		<%}else{ %>
 			<p>
 				아이디 혹은 비밀번호가 틀려요
-				<a href="${pageContext.request.contextPath }/user/loginform.jsp">다시 로그인</a>
+				<a href="${pageContext.request.contextPath }/user/loginform.jsp?url=<%=encodedUrl%>">다시 로그인</a>
 			</p>
 		<%} %>
 	</div>
